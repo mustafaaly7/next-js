@@ -14,17 +14,18 @@ export async function GET(){
 
 return Response.json({
 data: quotes,
-message : "Here Goes the Quotes"
 })
 
 }
 
+export async function POST(request){
 
-export async function POST(){
-
+const myEdit = await request.json() // api ko request bhejte hain 
+quotes.push(myEdit)
   return Response.json({
-  data: quotes,
-  message : "Here Goes the Quotes"
+    //humein response ata hai 
+    quotes : quotes ,
+    msg : "hello"
   })
   
   }
