@@ -2,7 +2,7 @@
 
 const todos = [
     {
-     todo:   "task1",id:1,isCompleted : false,
+     todo:   "task1",id:1,isCompleted : true,
     },
     {
         todo:   "task2",id:2,isCompleted : false,
@@ -43,5 +43,31 @@ return Response.json({
 }
 
 
-
-
+export async function PUT(request) {
+    const data = await request.json()
+    const todoInd = todos.findIndex((todo)=>todo.id == data.id)
+    todos[todoInd] = data
+    
+    return Response.json({
+        data : todos,
+        msg : "todo updated succesfully"
+    })
+    
+    
+    
+    
+    }
+    export async function DELETE(request) {
+        const data = await request.json()
+        const todoInd = todos.findIndex((todo)=>todo.id == data.id)
+        todos.splice(todoInd,1)
+        
+        return Response.json({
+            data : todos,
+            msg : "todo deleted succesfully"
+        })
+        
+        
+        
+        
+        }
